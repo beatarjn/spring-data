@@ -1,6 +1,5 @@
 package workshop.springb.data.repository;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import workshop.springb.data.model.Hobbit;
 
@@ -24,15 +23,9 @@ public interface HobbitRepository extends CrudRepository<Hobbit, Long> {
          -napisz test do metody
      */
 
-    @Query("SELECT h FROM Hobbit h WHERE h.firstName = :name AND h.lastName= :surname")
-    List<Hobbit> findWithQuery(String name, String surname);
-
     /*
         TODO 3
          -analogicznie jak w TODO2,  W @Query użyj zapytania SQL.
          -napisz test do metody
     */
-    @Query(value = "SELECT id, first_name, last_name FROM Hobbit h WHERE h.first_name = :firstName AND h.last_name= :lastName",
-            nativeQuery = true)
-    List<Hobbit> findWithNativeQuery(String firstName, String lastName);
 }
