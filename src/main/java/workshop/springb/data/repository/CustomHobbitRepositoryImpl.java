@@ -19,7 +19,7 @@ import java.util.List;
     2. Rozszerz HobbitRepository o CustomHobbitRepository, tak żeby  rozszerzał CrudRepository i CustomHobbitRepository
     3. W API HobbitRepository pojawi się findWithCustomImplementation - napisz test dla nowej metody.
  */
-public class CustomHobbitRepositoryImpl implements CustomHobbitRepository{
+public class CustomHobbitRepositoryImpl {
     /*
         Zamiast @Autowired - zalecane dla wstrzykiwania EntityManager'a
         różnica:

@@ -7,7 +7,7 @@ import workshop.springb.data.model.Hobbit;
 
 import java.util.List;
 
-public interface HobbitRepository extends CustomHobbitRepository, CrudRepository<Hobbit, Long> {
+public interface HobbitRepository extends CrudRepository<Hobbit, Long> {
 
     List<Hobbit> findByFirstNameAndLastName(String fisrtName, String lastName);
 
