@@ -2,7 +2,6 @@ package workshop.springb.data.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import workshop.springb.data.model.Hobbit;
 
 import java.util.List;
@@ -17,13 +16,4 @@ public interface HobbitRepository extends CrudRepository<Hobbit, Long> {
     @Query(value = "SELECT id, first_name, last_name FROM Hobbit h WHERE h.first_name = :firstName AND h.last_name= :lastName",
             nativeQuery = true)
     List<Hobbit> findWithNativeQuery(String firstName, String lastName);
-    /*
-        Zwróć uwagę na adnotację @Param, jeśli z jakichś przyczyn nazwa parametru metody ma się różnić od wartości
-        zdefiniowanej w @NamedQuery: (...) WHERE h.firstName = :firstName (...)
-     */
-
-    List<Hobbit> findWithNamedQuery(@Param("firstName") String name, String lastName);
-
-    List<Hobbit> findWithNamedNativeQuery(String firstName, String lastName);
-
 }

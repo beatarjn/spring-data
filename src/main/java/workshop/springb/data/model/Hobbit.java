@@ -28,18 +28,19 @@ import javax.persistence.*;
     TODO 2 utwórz @NamedQuery / metodę w HobbitRepository i test - zachowanie identyczne jak findByFirstNameAndLastName
     (zapytanie JPQL)
  */
-@NamedQuery(
-        name = "Hobbit.findWithNamedQuery",
-        query = "SELECT h FROM Hobbit h WHERE h.firstName = :firstName AND h.lastName= :lastName")
+
+
+
+
 /*
     TODO 3 utwórz @NamedNativeQuery / metodę w HobbitRepository i test - zachowanie identyczne jak findByFirstNameAndLastName
     (zapytanie SQL)
  */
-@NamedNativeQuery(
-        name = "Hobbit.findWithNamedNativeQuery",
-        query = "SELECT id, first_name, last_name  FROM Hobbit h WHERE h.first_name = :firstName AND h.last_name= :lastName",
-        resultClass = Hobbit.class
-)
+
+
+
+
+
 public class Hobbit {
 
     @Id
