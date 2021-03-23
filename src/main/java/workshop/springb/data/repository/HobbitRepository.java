@@ -1,11 +1,14 @@
 package workshop.springb.data.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import workshop.springb.data.model.Hobbit;
 
 import java.util.List;
 
 public interface HobbitRepository extends CrudRepository<Hobbit, Long> {
+
 
     List<Hobbit> findByFirstNameAndLastName(String firstName, String lastName);
 
@@ -23,9 +26,15 @@ public interface HobbitRepository extends CrudRepository<Hobbit, Long> {
          -napisz test do metody
      */
 
+    @Query("FROM Hobbit h WHERE h.firstName= :firstName AND h.lastName=:lastName")
+    List<Hobbit> findByFirstNameAndLastNameUsingQuery(@Param("firstName") String firstName, @Param("lastName") String lastName);
+
     /*
         TODO 3
          -analogicznie jak w TODO2,  W @Query użyj zapytania SQL.
          -napisz test do metody
     */
+
+    @Query(value = "SELECT * FROM Hobbit WHERE first_name= :firstName AND last_name=:lastName", nativeQuery = true)
+    List<Hobbit> findByFirstNameAndLastNameUsingSqlQuery(String firstName, String lastName);
 }
