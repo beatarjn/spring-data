@@ -39,8 +39,9 @@ import javax.persistence.*;
 
 
 
-
-
+@NamedQuery(name="Hobbit.findByFirstNameAndLastNameNamedQuery",query="SELECT h FROM Hobbit h WHERE h.firstName=:firstName AND h.lastName=:lastName")
+@NamedNativeQuery(name="Hobbit.findByFirstNameAndLastNameByNamedNativeQuery",
+        query="SELECT * FROM Hobbit h WHERE h.first_name=:firstName AND h.last_name=:lastName", resultClass = Hobbit.class)
 public class Hobbit {
 
     @Id

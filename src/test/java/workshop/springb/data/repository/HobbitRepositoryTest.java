@@ -19,12 +19,12 @@ class HobbitRepositoryTest {
     }
 
     @Test
-    public void shouldFindHobbit_usingQuery(){
-        assertEquals(1, hobbitRepository.findWithQuery("Frodo", "Baggins").size());
+    public void shouldFindFrodoUsingNamedQuery(){
+        assertEquals(1, hobbitRepository.findByFirstNameAndLastNameNamedQuery("Frodo", "Baggins").size());
     }
 
     @Test
-    public void shouldAddHobbit_usingNativeQuery(){
-        assertEquals(1, hobbitRepository.findWithNativeQuery("Frodo", "Baggins").size());
+    public void shouldFindFrodoUsingNamedNativeQuery(){
+        assertEquals(1, hobbitRepository.findByFirstNameAndLastNameByNamedNativeQuery("Frodo", "Baggins").size());
     }
 }

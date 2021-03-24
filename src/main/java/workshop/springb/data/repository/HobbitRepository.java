@@ -1,19 +1,23 @@
 package workshop.springb.data.repository;
 
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import workshop.springb.data.model.Hobbit;
 
+import javax.persistence.NamedNativeQuery;
 import java.util.List;
 
 public interface HobbitRepository extends CrudRepository<Hobbit, Long> {
 
     List<Hobbit> findByFirstNameAndLastName(String fisrtName, String lastName);
 
-    @Query("SELECT h FROM Hobbit h WHERE h.firstName = :name AND h.lastName= :surname")
-    List<Hobbit> findWithQuery(String name, String surname);
 
-    @Query(value = "SELECT id, first_name, last_name FROM Hobbit h WHERE h.first_name = :firstName AND h.last_name= :lastName",
-            nativeQuery = true)
-    List<Hobbit> findWithNativeQuery(String firstName, String lastName);
+    List<Hobbit> findByFirstNameAndLastNameNamedQuery(String firstName, String lastName);
+
+
+    List<Hobbit> findByFirstNameAndLastNameByNamedNativeQuery(String firstName, String lastName);
+
+
+
 }
